@@ -1,0 +1,28 @@
+# Конфигурация по умолчанию для проекта OrionPro
+
+# Этапы для анализа
+target_steps:
+  - pattern: "Step 4/21: BuildOrionPRO"
+    name: "BuildOrionPRO"
+
+# Маркеры вложенных этапов
+stage_markers:
+  - "<build>"
+  - "<brcc>"
+  - "<dcc>"
+
+# Паттерны предупреждений
+warning_patterns:
+  - " Warning: "
+  - " Hint: "
+
+# Игнорируемые паттерны (для фильтрации временных меток и путей)
+ignore_patterns:
+  timestamp: "^\\[\\d{2}:\\d{2}:\\d{2}\\]"
+  path_prefix: "N:\\\\BuildArea\\\\[^\\\\]+\\\\"
+
+# Настройки вывода
+output:
+  use_colors: true
+  show_unchanged_count: true
+  group_by_stage: true
