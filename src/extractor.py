@@ -77,9 +77,10 @@ def normalize_warning(text: str, config: Config) -> str:
 
     Выполняет следующие операции:
     1. Удаляет временные метки в начале строки (формат [HH:MM:SS])
-    2. Нормализует пути к файлам (убирает абсолютные префиксы)
-    3. Применяет паттерны игнорирования из конфигурации
-    4. Убирает лишние пробелы
+    2. Удаляет номера строк из путей к файлам (file.pas(123) -> file.pas)
+    3. Нормализует пути к файлам (убирает абсолютные префиксы)
+    4. Применяет паттерны игнорирования из конфигурации
+    5. Убирает лишние пробелы
 
     Args:
         text: Оригинальный текст предупреждения
@@ -91,7 +92,7 @@ def normalize_warning(text: str, config: Config) -> str:
     Examples:
         >>> config = Config()
         >>> normalize_warning("[14:13:30] : [<dcc>] file.pas(123) Warning: test", config)
-        "file.pas(123) Warning: test"
+        "file.pas Warning: test"
     """
     normalized = text
 
@@ -112,11 +113,24 @@ def normalize_warning(text: str, config: Config) -> str:
         path_prefix_pattern = config.ignore_patterns["path_prefix"]
         normalized = re.sub(path_prefix_pattern, "", normalized)
 
+    # Удаляем номера строк из путей к файлам
+    # Формат: file.pas(123) -> file.pas
+    normalized = re.sub(
+        r"([A-Za-z]:[^\s()]+\.(?:pas|dpr|inc|PAS|DPR|INC)|"
+        r"[^\s():]+\.(?:pas|dpr|inc|PAS|DPR|INC))\(\d+\)",
+        r"\1",
+        normalized
+    )
+
     # Убираем множественные пробелы и табы
     normalized = re.sub(r"\s+", " ", normalized)
 
     # Убираем пробелы в начале и конце
     normalized = normalized.strip()
+
+    # Приводим к нижнему регистру, если включена опция ignore_case
+    if config.comparison.get("ignore_case", False):
+        normalized = normalized.lower()
 
     return normalized
 
@@ -148,10 +162,10 @@ def extract_warnings(step: BuildStep, config: Config) -> List[Warning]:
     # Обрабатываем строки текущего этапа
     for line in step.lines:
         # Проверяем каждый паттерн предупреждения
-        for pattern in config.warning_patterns:
-            if pattern in line:
-                # Определяем тип предупреждения
-                warning_type = "Warning" if "Warning:" in line else "Hint"
+        for warning_pattern in config.warning_patterns:
+            if warning_pattern.pattern in line:
+                # Используем тип из паттерна
+                warning_type = warning_pattern.type
 
                 # Извлекаем детали (путь к файлу и номер строки)
                 file_path, line_number = parse_warning_details(line)

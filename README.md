@@ -62,6 +62,22 @@ python -m src.main --help
 python -m src.main old.log new.log --config config/custom.yaml
 ```
 
+### Анализ всех этапов сборки
+
+Чтобы проанализировать все этапы сборки без фильтрации, используйте паттерн `"*"`:
+
+```yaml
+target_steps:
+  - pattern: "*"
+    name: "all"
+```
+
+Или создайте файл `config/all_steps.yaml`:
+
+```bash
+python -m src.main old.log new.log --config config/all_steps.yaml
+```
+
 ### Параметры конфигурации
 
 Пример конфигурационного файла:
@@ -80,8 +96,12 @@ stage_markers:
 
 # Паттерны предупреждений
 warning_patterns:
-  - " Warning: "
-  - " Hint: "
+  - pattern: "Warning:"
+    type: "Warning"
+  - pattern: "Hint:"
+    type: "Hint"
+  - pattern: "[vip][warning]"
+    type: "Warning"
 
 # Игнорируемые паттерны (для фильтрации временных меток и путей)
 ignore_patterns:
@@ -93,17 +113,23 @@ output:
   use_colors: true
   show_unchanged_count: true
   group_by_stage: true
+
+# Настройки сравнения
+comparison:
+  ignore_case: false  # Игнорировать регистр при сравнении
 ```
 
 ### Описание параметров
 
 - **target_steps**: Список этапов сборки для анализа. Каждый этап содержит:
-  - `pattern`: Регулярное выражение для поиска этапа в логе
+  - `pattern`: Регулярное выражение для поиска этапа в логе (используйте `"*"` для анализа всех этапов)
   - `name`: Имя этапа для отображения в отчёте
 
 - **stage_markers**: Маркеры начала вложенных этапов (например, `<build>`, `<dcc>`)
 
-- **warning_patterns**: Паттерны для поиска предупреждений в тексте лога
+- **warning_patterns**: Паттерны для поиска предупреждений в тексте лога. Каждый паттерн содержит:
+  - `pattern`: Текст для поиска в строке
+  - `type`: Тип предупреждения ("Warning" или "Hint")
 
 - **ignore_patterns**: Паттерны для нормализации текста при сравнении:
   - `timestamp`: Регулярное выражение для удаления временных меток
@@ -113,6 +139,9 @@ output:
   - `use_colors`: Использовать цветной вывод (true/false)
   - `show_unchanged_count`: Показывать количество неизменных предупреждений (true/false)
   - `group_by_stage`: Группировать предупреждения по этапам сборки (true/false)
+
+- **comparison**: Настройки сравнения:
+  - `ignore_case`: Игнорировать регистр букв при сравнении предупреждений (true/false)
 
 ## Структура проекта
 

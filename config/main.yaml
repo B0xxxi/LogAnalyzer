@@ -1,15 +1,19 @@
-# Конфигурация по умолчанию для проекта OrionPro
+# Конфигурация для анализа ВСЕХ этапов сборки
 
-# Этапы для анализа
+# Паттерн "*" означает анализировать все этапы без фильтрации
 target_steps:
   - pattern: "Step 4/21: BuildOrionPRO"
     name: "BuildOrionPRO"
+  - pattern: "Step 2/21:"
+    name: "Step 2/21"
+  - pattern: "Step 7/21:"
+    name: "Step 7/21"
 
 # Маркеры вложенных этапов
 stage_markers:
   - "<build>"
   - "<brcc>"
-  - "[<dcc>]"
+  - "<dcc>"
 
 # Паттерны предупреждений
 warning_patterns:
@@ -19,6 +23,7 @@ warning_patterns:
     type: "Hint"
   - pattern: "[vip][warning]"
     type: "Warning"
+
 
 # Игнорируемые паттерны (для фильтрации временных меток и путей)
 ignore_patterns:
@@ -33,4 +38,4 @@ output:
 
 # Настройки сравнения
 comparison:
-  ignore_case: false  # Игнорировать регистр при сравнении (true/false)
+  ignore_case: true  # Игнорировать регистр при сравнении (true/false)

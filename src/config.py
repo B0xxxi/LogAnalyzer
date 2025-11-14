@@ -26,6 +26,14 @@ class TargetStep:
 
 
 @dataclass
+class WarningPattern:
+    """Паттерн предупреждения с типом."""
+
+    pattern: str
+    type: str
+
+
+@dataclass
 class Config:
     """
     Конфигурация для парсинга и сравнения логов сборки.
@@ -46,8 +54,12 @@ class Config:
     )
 
     # Паттерны предупреждений
-    warning_patterns: List[str] = field(
-        default_factory=lambda: [" Warning: ", " Hint: "]
+    warning_patterns: List[WarningPattern] = field(
+        default_factory=lambda: [
+            WarningPattern(pattern="Warning:", type="Warning"),
+            WarningPattern(pattern="Hint:", type="Hint"),
+            WarningPattern(pattern="[vip][warning]", type="Warning"),
+        ]
     )
 
     # Игнорируемые паттерны (для фильтрации временных меток и путей)
@@ -64,6 +76,13 @@ class Config:
             "use_colors": True,
             "show_unchanged_count": True,
             "group_by_stage": True,
+        }
+    )
+
+    # Настройки сравнения
+    comparison: Dict[str, bool] = field(
+        default_factory=lambda: {
+            "ignore_case": False,  # Игнорировать регистр при сравнении
         }
     )
 
@@ -110,23 +129,46 @@ def load_config(config_path: Optional[str] = None) -> Config:
                     )
                 )
 
+        # Парсим warning_patterns
+        warning_patterns = []
+        if "warning_patterns" in data:
+            for pattern_data in data["warning_patterns"]:
+                # Поддержка старого формата (строка) и нового (словарь)
+                if isinstance(pattern_data, str):
+                    # Старый формат - определяем тип по содержимому
+                    pattern_type = "Warning" if "Warning" in pattern_data else "Hint"
+                    warning_patterns.append(
+                        WarningPattern(pattern=pattern_data, type=pattern_type)
+                    )
+                else:
+                    # Новый формат - словарь с pattern и type
+                    warning_patterns.append(
+                        WarningPattern(
+                            pattern=pattern_data.get("pattern", ""),
+                            type=pattern_data.get("type", "Warning"),
+                        )
+                    )
+
         # Создаем конфигурацию с переопределенными значениями
         config = Config()
 
         if target_steps:
             config.target_steps = target_steps
 
+        if warning_patterns:
+            config.warning_patterns = warning_patterns
+
         if "stage_markers" in data:
             config.stage_markers = data["stage_markers"]
-
-        if "warning_patterns" in data:
-            config.warning_patterns = data["warning_patterns"]
 
         if "ignore_patterns" in data:
             config.ignore_patterns = data["ignore_patterns"]
 
         if "output" in data:
             config.output.update(data["output"])
+
+        if "comparison" in data:
+            config.comparison.update(data["comparison"])
 
         return config
 
@@ -171,6 +213,21 @@ def validate_config(config: Config) -> bool:
         raise ConfigValidationError(
             "Не указаны паттерны предупреждений (warning_patterns)"
         )
+
+    # Проверка каждого паттерна предупреждений
+    for i, wp in enumerate(config.warning_patterns):
+        if not wp.pattern:
+            raise ConfigValidationError(
+                f"Паттерн предупреждения #{i+1}: отсутствует pattern"
+            )
+        if not wp.type:
+            raise ConfigValidationError(
+                f"Паттерн предупреждения #{i+1}: отсутствует type"
+            )
+        if wp.type not in ["Warning", "Hint"]:
+            raise ConfigValidationError(
+                f"Паттерн предупреждения #{i+1}: type должен быть 'Warning' или 'Hint', получено '{wp.type}'"
+            )
 
     # Проверка корректности регулярных выражений в ignore_patterns
     if config.ignore_patterns:

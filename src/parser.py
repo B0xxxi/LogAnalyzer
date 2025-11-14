@@ -273,6 +273,8 @@ def extract_target_steps(steps: List[BuildStep], config: Config) -> List[BuildSt
 
     Фильтрует этапы по паттернам из конфигурации и сохраняет
     всю иерархию внутри целевых этапов.
+    
+    Если в конфигурации указан паттерн "*", возвращает все этапы.
 
     Args:
         steps: Список всех этапов сборки
@@ -281,6 +283,11 @@ def extract_target_steps(steps: List[BuildStep], config: Config) -> List[BuildSt
     Returns:
         List[BuildStep]: Список целевых этапов с их иерархией
     """
+    # Проверяем, есть ли паттерн "*" для выбора всех этапов
+    for target_step in config.target_steps:
+        if target_step.pattern == "*":
+            return steps
+    
     target_steps = []
 
     for step in steps:
