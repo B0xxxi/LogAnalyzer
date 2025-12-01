@@ -17,8 +17,6 @@ warning_patterns:
     type: "Warning"
   - pattern: "Hint:"
     type: "Hint"
-  - pattern: "[vip][warning]"
-    type: "Warning"
 
 # Игнорируемые паттерны (для фильтрации временных меток и путей)
 ignore_patterns:

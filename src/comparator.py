@@ -185,7 +185,41 @@ def compare_logs(old_warnings: List[Warning], new_warnings: List[Warning]) -> Su
         added_warnings = [w for w in new_stage_warnings if w.text in added_texts]
         removed_warnings = [w for w in old_stage_warnings if w.text in removed_texts]
 
-        # Подсчитываем неизменные по типам
+        # Нечеткое сравнение для обрезанных предупреждений
+        # Проверяем, является ли добавленное предупреждение префиксом удаленного (или наоборот)
+        final_added = []
+        matched_removed_indices = set()
+        
+        fuzzy_unchanged_count = 0
+        fuzzy_unchanged_warnings_count = 0
+        fuzzy_unchanged_hints_count = 0
+
+        for new_w in added_warnings:
+            match_found = False
+            for i, old_w in enumerate(removed_warnings):
+                if i in matched_removed_indices:
+                    continue
+                
+                # Проверяем совпадение типов и префиксное совпадение текстов
+                if new_w.type == old_w.type:
+                    if new_w.text.startswith(old_w.text) or old_w.text.startswith(new_w.text):
+                        match_found = True
+                        matched_removed_indices.add(i)
+                        
+                        fuzzy_unchanged_count += 1
+                        if new_w.type == "Warning":
+                            fuzzy_unchanged_warnings_count += 1
+                        else:
+                            fuzzy_unchanged_hints_count += 1
+                        break
+            
+            if not match_found:
+                final_added.append(new_w)
+        
+        # Формируем итоговый список удаленных (исключая найденные нечеткие совпадения)
+        final_removed = [w for i, w in enumerate(removed_warnings) if i not in matched_removed_indices]
+
+        # Подсчитываем неизменные по типам (точные совпадения)
         unchanged_warnings_count = 0
         unchanged_hints_count = 0
         
@@ -199,11 +233,11 @@ def compare_logs(old_warnings: List[Warning], new_warnings: List[Warning]) -> Su
         # Создаём результат для этапа
         result = ComparisonResult(
             stage_name=new_stage_name,  # Используем имя из нового лога
-            added=added_warnings,
-            removed=removed_warnings,
-            unchanged_count=len(unchanged_texts),
-            unchanged_warnings=unchanged_warnings_count,
-            unchanged_hints=unchanged_hints_count,
+            added=final_added,
+            removed=final_removed,
+            unchanged_count=len(unchanged_texts) + fuzzy_unchanged_count,
+            unchanged_warnings=unchanged_warnings_count + fuzzy_unchanged_warnings_count,
+            unchanged_hints=unchanged_hints_count + fuzzy_unchanged_hints_count,
         )
 
         # Добавляем результат в сводку только если есть изменения или предупреждения

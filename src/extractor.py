@@ -96,6 +96,10 @@ def normalize_warning(text: str, config: Config) -> str:
     """
     normalized = text.strip()
 
+    # Удаляем префикс типа [Hint] или [Warning] перед временной меткой, если он есть
+    # Например: "[Hint] [14:14:17] ..." -> "[14:14:17] ..."
+    normalized = re.sub(r"^\[(Hint|Warning)\]\s*", "", normalized, flags=re.IGNORECASE)
+
     # Удаляем временную метку в начале строки
     if "timestamp" in config.ignore_patterns:
         timestamp_pattern = config.ignore_patterns["timestamp"]
@@ -121,6 +125,16 @@ def normalize_warning(text: str, config: Config) -> str:
         r"([^\s()]*[\\./][^\s()]+)\(\d+\)",
         r"\1",
         normalized
+    )
+
+    # Удаляем пути к файлам перед ключевыми словами Warning/Hint
+    # Некоторые предупреждения включают путь (например, "file.pas Hint: ..."),
+    # другие - нет (просто "Hint: ..."). Удаляем путь для единообразия.
+    normalized = re.sub(
+        r"\s*\S+\.(pas|dpr|inc|PAS|DPR|INC|txt|TXT)\s+(Hint|Warning):",
+        r"\2:",
+        normalized,
+        flags=re.IGNORECASE
     )
 
     # Убираем множественные пробелы и табы
