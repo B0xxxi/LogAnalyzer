@@ -115,10 +115,10 @@ def normalize_warning(text: str, config: Config) -> str:
         normalized = re.sub(path_prefix_pattern, "", normalized)
 
     # Удаляем номера строк из путей к файлам
-    # Формат: file.pas(123) -> file.pas
+    # Формат: file.ext(123) -> file.ext
+    # Ищем любой путь (содержит точку или слэш) с номером строки в скобках
     normalized = re.sub(
-        r"([A-Za-z]:[^\s()]+\.(?:pas|dpr|inc|PAS|DPR|INC)|"
-        r"[^\s():]+\.(?:pas|dpr|inc|PAS|DPR|INC))\(\d+\)",
+        r"([^\s()]*[\\./][^\s()]+)\(\d+\)",
         r"\1",
         normalized
     )

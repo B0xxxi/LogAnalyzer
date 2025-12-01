@@ -6,25 +6,15 @@
 ╚══════════════════════════════════════════════════════════════╝
 
 ┌─ ОБЩАЯ СТАТИСТИКА ────────────────────────────────────────┐
-│ Warnings:  220 → 223 [91m(+3)[0m
+│ Warnings:  142 → 145 [91m(+3)[0m
 │ Hints:     2702 → 2719 [91m(+17)[0m
-│ Всего:     2922 → 2942 [91m(+20)[0m
+│ Всего:     2844 → 2864 [91m(+20)[0m
 └────────────────────────────────────────────────────────────┘
 
 ┌─ ПО ЭТАПАМ СБОРКИ ─────────────────────────────────────────┐
 │ <brcc>
-│   Warnings: 3 → 3 
-│   Hints:    131 → 131 
-│
-│ <dcc>
-│   Warnings: 137 → 140 [91m(+3)[0m
-│   Hints:    2571 → 2588 [91m(+17)[0m
-│
-│ Step 2/21
-│   Warnings: 78 → 78 
-│
-│ Step 7/21
-│   Warnings: 2 → 2 
+│   Warnings: 142 → 142 
+│   Hints:    2702 → 2704 [91m(+2)[0m
 │
 └────────────────────────────────────────────────────────────┘
 
@@ -34,47 +24,15 @@
 
 ┌─ <brcc> ────────────────────────────────────────────────────┐
 │                                                            │
-│ [92m✚ ДОБАВЛЕНО (0 warnings, 1 hints):[0m
-│                                                            │
-│   [92m[Hint] [15:51:48] : [<ecc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
-│   [92m       4\Source\ExportPack\frxExportCSVDialog.pas(41)[0m
-│   [92m       Hint: Overriding virtual method[0m
-│   [92m       'TfrxCSVExportDialog.InitFilterFromDialog' has l[0m
-│                                                            │
-│ [91m✖ УДАЛЕНО (0 warnings, 1 hints):[0m
-│                                                            │
-│   [91m[Hint] [14:14:36] : [<ecc>][0m
-│   [91m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
-│   [91m       4\Source\ExportPack\frxExportCSVDialog.pas(41)[0m
-│   [91m       Hint: Overriding virtual method[0m
-│   [91m       'TfrxCSVExportDialog.InitFilterFromDialog' has[0m
-│   [91m       lower visibility (protected) than base class[0m
-│   [91m       'TfrxBaseExportDialog' (public)[0m
-│                                                            │
-│ [90m═ БЕЗ ИЗМЕНЕНИЙ: 131 предупреждений[0m
-└────────────────────────────────────────────────────────────┘
-
-┌─ <dcc> ─────────────────────────────────────────────────────┐
-│                                                            │
-│ [92m✚ ДОБАВЛЕНО (5 warnings, 61 hints):[0m
+│ [92m✚ ДОБАВЛЕНО (3 warnings, 44 hints):[0m
 │                                                            │
 │   [92m[Hint] [15:50:58] : [<dcc>][0m
 │   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20366)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Hint] [15:50:58] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20369)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Hint] [15:50:58] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20373)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Hint] [15:50:58] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20376)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
+│   [92m       Hint: Value assigned to 'VValue' never used (x15)[0m
 │   [92m[Warning] [15:50:58] : [<dcc>][0m
 │   [92m          N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20365)[0m
 │   [92m          Warning: Variable 'VValue' might not have been[0m
-│   [92m          initialized[0m
+│   [92m          initialized (x4)[0m
 │   [92m[Hint] [15:51:00] : [<dcc>] Hint: Value assigned to[0m
 │   [92m       'DragIndexPos' never used[0m
 │   [92m[Hint] [15:51:01] : [<dcc>] Hint: Private symbol[0m
@@ -112,22 +70,6 @@
 │   [92m[Hint] [15:51:03] : [<dcc>] SiriusImportFormUnit.pas(272)[0m
 │   [92m       Hint: Variable 'FileExt' is declared but never used[0m
 │   [92m       in 'TSiriusImportForm.SelectFileButtonClick'[0m
-│   [92m[Hint] [15:51:08] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20366)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Hint] [15:51:08] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20369)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Hint] [15:51:08] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20373)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Hint] [15:51:08] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20376)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Warning] [15:51:08] : [<dcc>][0m
-│   [92m          N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20365)[0m
-│   [92m          Warning: Variable 'VValue' might not have been[0m
-│   [92m          initialized[0m
 │   [92m[Hint] [15:51:09] : [<dcc>] uClassAddress.pas(443) Hint:[0m
 │   [92m       Variable 'i' is declared but never used in[0m
 │   [92m       'TAddressParser.GetDevAddr'[0m
@@ -173,22 +115,6 @@
 │   [92m[Hint] [15:51:23] : [<dcc>] unMonitor.pas(15992) Hint:[0m
 │   [92m       Variable 'aQueryID' is declared but never used in[0m
 │   [92m       'TfrmMonitor.RpcServerDeviceRealVersionUpdExecute'[0m
-│   [92m[Hint] [15:51:31] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20366)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Hint] [15:51:31] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20369)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Hint] [15:51:31] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20373)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Hint] [15:51:31] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20376)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Warning] [15:51:31] : [<dcc>][0m
-│   [92m          N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20365)[0m
-│   [92m          Warning: Variable 'VValue' might not have been[0m
-│   [92m          initialized[0m
 │   [92m[Hint] [15:51:32] : [<dcc>] Hint: Variable 'i' is declared[0m
 │   [92m       but never used in[0m
 │   [92m       'TImpexData.FindEmployeeInOLAndWriteEmpNumOLIntoObj'[0m
@@ -205,32 +131,19 @@
 │   [92m          and unsigned types - widened both operands[0m
 │   [92m[Hint] [15:51:40] : [<dcc>][0m
 │   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
-│   [92m       4\Source\ExportPack\frxExportODFDialog.pas(38)[0m
-│   [92m       Hint: Overriding virtual method[0m
-│   [92m       'TfrxODFExportDialog.InitControlsFromFilter' has[0m
-│   [92m       lower visibility (protected) than base class[0m
-│   [92m       'TfrxBaseExportDialog' (public)[0m
-│   [92m[Hint] [15:51:40] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
 │   [92m       4\Source\ExportPack\frxExportXLSDialog.pas(44)[0m
 │   [92m       Hint: Overriding virtual method[0m
 │   [92m       'TfrxXLSExportDialog.InitControlsFromFilter' has[0m
 │   [92m[Hint] [15:51:41] : [<dcc>][0m
 │   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
-│   [92m       4\Source\ExportPack\frxExportHTMLDivDialog.pas(50)[0m
-│   [92m       Hint: Overriding virtual method[0m
-│   [92m       'TfrxHTMLDivExportDialog.InitControlsFromFilter'[0m
-│   [92m       has lower visibility (protected) than base class[0m
-│   [92m       'TfrxBaseExportDialog' (public)[0m
-│   [92m[Hint] [15:51:41] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
 │   [92m       4\Source\ExportPack\frxExportXLSXDialog.pas(44)[0m
 │   [92m       Hint: Overriding virtual method[0m
 │   [92m       'TfrxXLSXExportDialog.InitFilterFromDialog' has[0m
-│   [92m[Hint] [15:51:42] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\components\WorkTime\frmChart.pas(234)[0m
-│   [92m       Hint: Private symbol 'ScrollBoxRect' declared but[0m
-│   [92m       never used[0m
+│   [92m[Hint] [15:51:48] : [<ecc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
+│   [92m       4\Source\ExportPack\frxExportCSVDialog.pas(41)[0m
+│   [92m       Hint: Overriding virtual method[0m
+│   [92m       'TfrxCSVExportDialog.InitFilterFromDialog' has l[0m
 │   [92m[Hint] [15:52:02] : [<dcc>] Subscriber.pas(756) Hint:[0m
 │   [92m       Variable 'SubInfo' is declared but never used in[0m
 │   [92m       'TSubscribersInfo.GetInfoSubscribByDeviceMac'[0m
@@ -241,35 +154,21 @@
 │   [92m[Hint] [15:52:14] : [<dcc>][0m
 │   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\CoreComp\uUniStatisticConstTables.pas(1327)[0m
 │   [92m       Hint:[0m
-│   [92m[Hint] [15:52:15] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20366)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
 │   [92m[Hint] [15:52:15] : [<dcc>] Hint: Value assigned to[0m
 │   [92m       'VValue' never used[0m
-│   [92m[Hint] [15:52:15] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20373)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Hint] [15:52:15] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20376)[0m
-│   [92m       Hint: Value assigned to 'VValue' never used[0m
-│   [92m[Warning] [15:52:15] : [<dcc>][0m
-│   [92m          N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20365)[0m
-│   [92m          Warning: Variable 'VValue' might not have been[0m
-│   [92m          initialized[0m
 │   [92m[Hint] [15:52:18] : [<dcc>] Hint: Value assigned to 'T2'[0m
 │   [92m       never used[0m
 │   [92m[Hint] [15:52:34] : [<dcc>] uPlans.pas(236) Hint: Value[0m
 │   [92m       assigned to 'TPlans.AddPlan' never used[0m
 │   [92m[Hint] [15:52:42] : [<dcc>] uFrameMainChart.pas(540) Hint:[0m
 │   [92m       Value assigned to 'ParamNum' never used[0m
+│   [92m[Warning] [15:52:43]W: [Step 7/21] [vip][warning]build[0m
+│   [92m          number overflow: 24787 change to:4787[0m
 │   [92m[Hint] [15:52:45] : [<dcc>][0m
 │   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\JVCL_old\jvcl\source\JvHidControllerClass.pas(1828)[0m
-│   [92m       Hint: Value assigned to 'I' never used[0m
-│   [92m[Hint] [15:52:48] : [<dcc>][0m
-│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\JVCL_old\jvcl\source\JvHidControllerClass.pas(1828)[0m
-│   [92m       Hint: Value assigned to 'I' never used[0m
+│   [92m       Hint: Value assigned to 'I' never used (x2)[0m
 │                                                            │
-│ [91m✖ УДАЛЕНО (2 warnings, 44 hints):[0m
+│ [91m✖ УДАЛЕНО (3 warnings, 42 hints):[0m
 │                                                            │
 │   [91m[Hint] [14:13:34] : [<dcc>] tResultConvet.pas(1105) Hint:[0m
 │   [91m       Value assigned to 'TOriAnswerParser.ParseIt_T'[0m
@@ -378,24 +277,10 @@
 │   [91m       method 'TfrxODFExportDialog.InitControlsFromFilter'[0m
 │   [91m       has lower visibility (protected) than base class[0m
 │   [91m       'TfrxBaseExportDialog' (public)[0m
-│   [91m[Hint] [14:14:26] : [<dcc>][0m
-│   [91m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
-│   [91m       4\Source\ExportPack\frxExportXLSDialog.pas(44)[0m
-│   [91m       Hint: Overriding virtual method[0m
-│   [91m       'TfrxXLSExportDialog.InitControlsFromFilter' has[0m
-│   [91m       lower visibility (protected) than base class[0m
-│   [91m       'TfrxBaseExportDialog' (public)[0m
 │   [91m[Hint] [14:14:27] : [<dcc>] Hint: Overriding virtual[0m
 │   [91m       method[0m
 │   [91m       'TfrxHTMLDivExportDialog.InitControlsFromFilter'[0m
 │   [91m       has lower visibility (protected) than base class[0m
-│   [91m       'TfrxBaseExportDialog' (public)[0m
-│   [91m[Hint] [14:14:27] : [<dcc>][0m
-│   [91m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
-│   [91m       4\Source\ExportPack\frxExportXLSXDialog.pas(44)[0m
-│   [91m       Hint: Overriding virtual method[0m
-│   [91m       'TfrxXLSXExportDialog.InitFilterFromDialog' has[0m
-│   [91m       lower visibility (protected) than base class[0m
 │   [91m       'TfrxBaseExportDialog' (public)[0m
 │   [91m[Hint] [14:14:29] : [<dcc>] Hint: Private symbol[0m
 │   [91m       'ScrollBoxRect' declared but never used[0m
@@ -411,37 +296,9 @@
 │   [91m       'TAboutEmployee_ITOGO_FullReport.SendFinalDataToStorage'[0m
 │   [91m[Hint] [14:15:32] : [<dcc>] Hint: Value assigned to[0m
 │   [91m       'ParamNum' never used[0m
-│                                                            │
-│ [90m═ БЕЗ ИЗМЕНЕНИЙ: 2078 предупреждений[0m
-└────────────────────────────────────────────────────────────┘
-
-┌─ Step 2/21 ─────────────────────────────────────────────────┐
-│                                                            │
-│ [92m✚ ДОБАВЛЕНО (1 warnings, 0 hints):[0m
-│                                                            │
-│   [92m[Warning] [15:50:52]W: [Step 2/21] [vip][warning]build[0m
-│   [92m          number overflow: 24787 change to:4787[0m
-│                                                            │
-│ [91m✖ УДАЛЕНО (1 warnings, 0 hints):[0m
-│                                                            │
-│   [91m[Warning] [14:13:27]W: [Step 2/21] [vip][warning]build[0m
-│   [91m          number overflow: 24782 change to:4782[0m
-│                                                            │
-│ [90m═ БЕЗ ИЗМЕНЕНИЙ: 39 предупреждений[0m
-└────────────────────────────────────────────────────────────┘
-
-┌─ Step 7/21 ─────────────────────────────────────────────────┐
-│                                                            │
-│ [92m✚ ДОБАВЛЕНО (1 warnings, 0 hints):[0m
-│                                                            │
-│   [92m[Warning] [15:52:43]W: [Step 7/21] [vip][warning]build[0m
-│   [92m          number overflow: 24787 change to:4787[0m
-│                                                            │
-│ [91m✖ УДАЛЕНО (1 warnings, 0 hints):[0m
-│                                                            │
 │   [91m[Warning] [14:15:34]W: [Step 7/21] [vip][warning]build[0m
 │   [91m          number overflow: 24782 change to:4782[0m
 │                                                            │
-│ [90m═ БЕЗ ИЗМЕНЕНИЙ: 1 предупреждений[0m
+│ [90m═ БЕЗ ИЗМЕНЕНИЙ: 2087 предупреждений[0m
 └────────────────────────────────────────────────────────────┘
 
