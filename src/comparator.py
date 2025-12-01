@@ -23,6 +23,8 @@ class ComparisonResult:
     added: List[Warning] = field(default_factory=list)  # Добавленные предупреждения
     removed: List[Warning] = field(default_factory=list)  # Удалённые предупреждения
     unchanged_count: int = 0  # Количество неизменных предупреждений
+    unchanged_warnings: int = 0  # Количество неизменных Warning
+    unchanged_hints: int = 0  # Количество неизменных Hint
 
 
 @dataclass
@@ -183,12 +185,25 @@ def compare_logs(old_warnings: List[Warning], new_warnings: List[Warning]) -> Su
         added_warnings = [w for w in new_stage_warnings if w.text in added_texts]
         removed_warnings = [w for w in old_stage_warnings if w.text in removed_texts]
 
+        # Подсчитываем неизменные по типам
+        unchanged_warnings_count = 0
+        unchanged_hints_count = 0
+        
+        for warning in old_stage_warnings:
+            if warning.text in unchanged_texts:
+                if warning.type == "Warning":
+                    unchanged_warnings_count += 1
+                elif warning.type == "Hint":
+                    unchanged_hints_count += 1
+
         # Создаём результат для этапа
         result = ComparisonResult(
             stage_name=new_stage_name,  # Используем имя из нового лога
             added=added_warnings,
             removed=removed_warnings,
             unchanged_count=len(unchanged_texts),
+            unchanged_warnings=unchanged_warnings_count,
+            unchanged_hints=unchanged_hints_count,
         )
 
         # Добавляем результат в сводку только если есть изменения или предупреждения

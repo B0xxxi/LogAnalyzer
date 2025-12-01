@@ -46,7 +46,7 @@ def colorize(text: str, color: str, use_colors: bool = True) -> str:
 
 
 def format_warning_text(
-    warning: Warning, max_width: int = 80, indent: str = "  "
+    warning: Warning, max_width: int = 80, indent: str = "  ", count: int = 1
 ) -> str:
     """
     Форматирует текст предупреждения с переносом длинных строк.
@@ -72,6 +72,8 @@ def format_warning_text(
 
     # Используем оригинальный текст для отображения
     text = warning.original
+    if count > 1:
+        text += f" (x{count})"
 
     # Если текст короткий, возвращаем как есть
     if len(prefix + text) <= max_width:
@@ -185,27 +187,32 @@ def print_summary(
         print("┌─ ПО ЭТАПАМ СБОРКИ " + "─" * 41 + "┐")
 
         for result in stages_with_changes:
-            # Подсчитываем количество по типам для этапа
-            stage_old_warnings = len([w for w in result.removed if w.type == "Warning"])
-            stage_new_warnings = len([w for w in result.added if w.type == "Warning"])
-            stage_unchanged_warnings = sum(
-                1
-                for w in result.removed
-                if w.type == "Warning" and w.text in [a.text for a in result.added]
-            )
+            # Дедуплицируем для подсчета (только уникальные)
+            added_unique = {}
+            for w in result.added:
+                if w.text not in added_unique:
+                    added_unique[w.text] = w
+            
+            removed_unique = {}
+            for w in result.removed:
+                if w.text not in removed_unique:
+                    removed_unique[w.text] = w
 
-            # Корректируем подсчёт неизменных
-            # unchanged_count включает все неизменные, нужно разделить по типам
-            # Для упрощения используем пропорцию из общей статистики
-            total_stage_warnings = stage_old_warnings + stage_unchanged_warnings
-            total_stage_new_warnings = stage_new_warnings + stage_unchanged_warnings
+            # Подсчитываем количество по типам для этапа (только уникальные)
+            stage_removed_warnings = len([w for w in removed_unique.values() if w.type == "Warning"])
+            stage_added_warnings = len([w for w in added_unique.values() if w.type == "Warning"])
+            stage_unchanged_warnings = result.unchanged_warnings
 
-            stage_old_hints = len([w for w in result.removed if w.type == "Hint"])
-            stage_new_hints = len([w for w in result.added if w.type == "Hint"])
-            stage_unchanged_hints = result.unchanged_count - stage_unchanged_warnings
+            stage_removed_hints = len([w for w in removed_unique.values() if w.type == "Hint"])
+            stage_added_hints = len([w for w in added_unique.values() if w.type == "Hint"])
+            stage_unchanged_hints = result.unchanged_hints
 
-            total_stage_hints = stage_old_hints + stage_unchanged_hints
-            total_stage_new_hints = stage_new_hints + stage_unchanged_hints
+            # Вычисляем старые и новые значения
+            total_stage_warnings = stage_removed_warnings + stage_unchanged_warnings
+            total_stage_new_warnings = stage_added_warnings + stage_unchanged_warnings
+
+            total_stage_hints = stage_removed_hints + stage_unchanged_hints
+            total_stage_new_hints = stage_added_hints + stage_unchanged_hints
 
             warnings_stage_diff = total_stage_new_warnings - total_stage_warnings
             hints_stage_diff = total_stage_new_hints - total_stage_hints
@@ -281,14 +288,30 @@ def print_stage_details(
     print("┌─ " + result.stage_name + " " + "─" * (58 - len(result.stage_name)) + "┐")
     print("│" + " " * 60 + "│")
 
-    # Подсчитываем количество по типам
-    added_warnings = [w for w in result.added if w.type == "Warning"]
-    added_hints = [w for w in result.added if w.type == "Hint"]
-    removed_warnings = [w for w in result.removed if w.type == "Warning"]
-    removed_hints = [w for w in result.removed if w.type == "Hint"]
+    # Дедуплицируем предупреждения для отображения (оставляем только уникальные по тексту)
+    # Также подсчитываем количество повторений
+    added_unique = {}
+    added_counts = {}
+    for w in result.added:
+        added_counts[w.text] = added_counts.get(w.text, 0) + 1
+        if w.text not in added_unique:
+            added_unique[w.text] = w
+    
+    removed_unique = {}
+    removed_counts = {}
+    for w in result.removed:
+        removed_counts[w.text] = removed_counts.get(w.text, 0) + 1
+        if w.text not in removed_unique:
+            removed_unique[w.text] = w
+
+    # Подсчитываем количество по типам (уникальные)
+    added_warnings = [w for w in added_unique.values() if w.type == "Warning"]
+    added_hints = [w for w in added_unique.values() if w.type == "Hint"]
+    removed_warnings = [w for w in removed_unique.values() if w.type == "Warning"]
+    removed_hints = [w for w in removed_unique.values() if w.type == "Hint"]
 
     # Добавленные предупреждения
-    if result.added:
+    if added_unique:
         header = (
             f"✚ ДОБАВЛЕНО ({len(added_warnings)} warnings, {len(added_hints)} hints):"
         )
@@ -296,8 +319,9 @@ def print_stage_details(
         print(f"│ {header}")
         print("│" + " " * 60 + "│")
 
-        for warning in result.added:
-            formatted = format_warning_text(warning, max_width=58, indent="")
+        for warning in added_unique.values():
+            count = added_counts.get(warning.text, 1)
+            formatted = format_warning_text(warning, max_width=58, indent="", count=count)
             # Разбиваем на строки если есть перенос
             lines = formatted.split("\n")
             for line in lines:
@@ -307,7 +331,7 @@ def print_stage_details(
         print("│" + " " * 60 + "│")
 
     # Удалённые предупреждения
-    if result.removed:
+    if removed_unique:
         header = (
             f"✖ УДАЛЕНО ({len(removed_warnings)} warnings, {len(removed_hints)} hints):"
         )
@@ -315,8 +339,9 @@ def print_stage_details(
         print(f"│ {header}")
         print("│" + " " * 60 + "│")
 
-        for warning in result.removed:
-            formatted = format_warning_text(warning, max_width=58, indent="")
+        for warning in removed_unique.values():
+            count = removed_counts.get(warning.text, 1)
+            formatted = format_warning_text(warning, max_width=58, indent="", count=count)
             # Разбиваем на строки если есть перенос
             lines = formatted.split("\n")
             for line in lines:
@@ -334,7 +359,7 @@ def print_stage_details(
         print(f"│ {unchanged_text}")
 
     # Если нет изменений вообще
-    if not result.added and not result.removed:
+    if not added_unique and not removed_unique:
         no_changes = "(нет изменений)"
         no_changes = colorize(no_changes, Colors.GRAY, use_colors)
         print(f"│   {no_changes}")

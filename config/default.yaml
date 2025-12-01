@@ -33,4 +33,4 @@ output:
 
 # Настройки сравнения
 comparison:
-  ignore_case: false  # Игнорировать регистр при сравнении (true/false)
+  ignore_case: true  # Игнорировать регистр при сравнении (true/false)

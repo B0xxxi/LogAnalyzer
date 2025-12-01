@@ -94,7 +94,7 @@ def normalize_warning(text: str, config: Config) -> str:
         >>> normalize_warning("[14:13:30] : [<dcc>] file.pas(123) Warning: test", config)
         "file.pas Warning: test"
     """
-    normalized = text
+    normalized = text.strip()
 
     # Удаляем временную метку в начале строки
     if "timestamp" in config.ignore_patterns:
@@ -102,8 +102,9 @@ def normalize_warning(text: str, config: Config) -> str:
         normalized = re.sub(timestamp_pattern, "", normalized)
 
     # Удаляем флаги после временной метки (например, " :", "i:", "W:")
-    # Формат: [HH:MM:SS]X: где X - один символ
-    normalized = re.sub(r"^\s*[A-Za-z ]?\s*:\s*", "", normalized)
+    # Формат: [HH:MM:SS]X: где X - один символ. Требуем пробел после двоеточия,
+    # чтобы не удалять буквы дисков в путях (например, N:\)
+    normalized = re.sub(r"^\s*[A-Za-z ]?\s*:\s+", "", normalized)
 
     # Удаляем префиксы в квадратных скобках (например, "[Step 4/21]", "[<dcc>]")
     normalized = re.sub(r"^\s*\[([^\]]+)\]\s*", "", normalized)

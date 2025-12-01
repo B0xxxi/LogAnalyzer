@@ -1,0 +1,362 @@
+╔══════════════════════════════════════════════════════════════╗
+║              СВОДКА СРАВНЕНИЯ СБОРОЧНЫХ ЛОГОВ                ║
+╠══════════════════════════════════════════════════════════════╣
+║ Старый лог: D7OrionPro_DevelopBuild_24782.log               ║
+║ Новый лог:  D7OrionPro_DevelopBuild_24787.log               ║
+╚══════════════════════════════════════════════════════════════╝
+
+┌─ ОБЩАЯ СТАТИСТИКА ────────────────────────────────────────┐
+│ Warnings:  142 → 145 [91m(+3)[0m
+│ Hints:     2702 → 2718 [91m(+16)[0m
+│ Всего:     2844 → 2863 [91m(+19)[0m
+└────────────────────────────────────────────────────────────┘
+
+┌─ ПО ЭТАПАМ СБОРКИ ─────────────────────────────────────────┐
+│ <brcc>
+│   Warnings: 3 → 3 
+│   Hints:    131 → 131 
+│
+│ <dcc>
+│   Warnings: 139 → 139 
+│   Hints:    2570 → 2572 [91m(+2)[0m
+│
+└────────────────────────────────────────────────────────────┘
+
+╔══════════════════════════════════════════════════════════════╗
+║                    ДЕТАЛЬНЫЕ ИЗМЕНЕНИЯ                       ║
+╚══════════════════════════════════════════════════════════════╝
+
+┌─ <brcc> ────────────────────────────────────────────────────┐
+│                                                            │
+│ [92m✚ ДОБАВЛЕНО (0 warnings, 1 hints):[0m
+│                                                            │
+│   [92m[Hint] [15:51:48] : [<ecc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
+│   [92m       4\Source\ExportPack\frxExportCSVDialog.pas(41)[0m
+│   [92m       Hint: Overriding virtual method[0m
+│   [92m       'TfrxCSVExportDialog.InitFilterFromDialog' has l[0m
+│                                                            │
+│ [91m✖ УДАЛЕНО (0 warnings, 1 hints):[0m
+│                                                            │
+│   [91m[Hint] [14:14:36] : [<ecc>][0m
+│   [91m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
+│   [91m       4\Source\ExportPack\frxExportCSVDialog.pas(41)[0m
+│   [91m       Hint: Overriding virtual method[0m
+│   [91m       'TfrxCSVExportDialog.InitFilterFromDialog' has[0m
+│   [91m       lower visibility (protected) than base class[0m
+│   [91m       'TfrxBaseExportDialog' (public)[0m
+│                                                            │
+│ [90m═ БЕЗ ИЗМЕНЕНИЙ: 131 предупреждений[0m
+└────────────────────────────────────────────────────────────┘
+
+┌─ <dcc> ─────────────────────────────────────────────────────┐
+│                                                            │
+│ [92m✚ ДОБАВЛЕНО (3 warnings, 47 hints):[0m
+│                                                            │
+│   [92m[Hint] [15:50:58] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20366)[0m
+│   [92m       Hint: Value assigned to 'VValue' never used[0m
+│   [92m[Warning] [15:50:58] : [<dcc>][0m
+│   [92m          N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\AbdComp\u_conf.pas(20365)[0m
+│   [92m          Warning: Variable 'VValue' might not have been[0m
+│   [92m          initialized[0m
+│   [92m[Hint] [15:51:00] : [<dcc>] Hint: Value assigned to[0m
+│   [92m       'DragIndexPos' never used[0m
+│   [92m[Hint] [15:51:01] : [<dcc>] Hint: Private symbol[0m
+│   [92m       'ValidPropertyItems' declared but never used[0m
+│   [92m[Hint] [15:51:01] : [<dcc>] MapExternal.pas(13) Hint:[0m
+│   [92m       Private symbol 'FindInTree' declared but never used[0m
+│   [92m[Hint] [15:51:02] : [<dcc>][0m
+│   [92m       NewEditorPlan\uIndicatorClass.pas(23) Hint:[0m
+│   [92m       Overriding virtual method[0m
+│   [92m       'TObjectIndicator.InitMaxMinValue' has lower[0m
+│   [92m       visibility (protected) than base class[0m
+│   [92m       'TObjectDevicesPlan' (public)[0m
+│   [92m[Hint] [15:51:02] : [<dcc>][0m
+│   [92m       NewEditorPlan\ufrmSettingToolIcons.pas(279) Hint:[0m
+│   [92m       Variable 'GlyphTop' is declared but never used in[0m
+│   [92m       'TfrmSettingToolIcons.tvObjectsPanelDrawText'[0m
+│   [92m[Hint] [15:51:02] : [<dcc>][0m
+│   [92m       Persons\ufrmStaffGuestCard.pas(163) Hint:[0m
+│   [92m       Overriding virtual method[0m
+│   [92m       'TfrmStaffGuestCard.OnMouseWheel' has lower[0m
+│   [92m       visibility (protected) than base class[0m
+│   [92m       'TfrmBasePersonCard' (public)[0m
+│   [92m[Hint] [15:51:02] : [<dcc>] Hint: Private symbol[0m
+│   [92m       'FfrmScannerAbby' declared but never used[0m
+│   [92m[Hint] [15:51:02] : [<dcc>] fnReadConf.pas(176) Hint:[0m
+│   [92m       Variable 'LineList' is declared but never used in[0m
+│   [92m       'TfrmDeviceConf.fillDevi[0m
+│   [92m[Hint] [15:51:03] : [<dcc>][0m
+│   [92m       Scenarios\uImportScenarios.pas(221) Hint: Private[0m
+│   [92m       symbol 'FFileName' declared but never used[0m
+│   [92m[Hint] [15:51:03] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\programs\VideoDriver\OrionAuto\unCheckAutoKey.pas(119)[0m
+│   [92m       Hint: Value assigned to 'GetOrionAutoKeyType' never[0m
+│   [92m       used[0m
+│   [92m[Hint] [15:51:03] : [<dcc>] SiriusImportFormUnit.pas(272)[0m
+│   [92m       Hint: Variable 'FileExt' is declared but never used[0m
+│   [92m       in 'TSiriusImportForm.SelectFileButtonClick'[0m
+│   [92m[Hint] [15:51:03] : [<dcc>] Hint: Value assigned to 'i'[0m
+│   [92m       never used[0m
+│   [92m[Hint] [15:51:09] : [<dcc>] uClassAddress.pas(443) Hint:[0m
+│   [92m       Variable 'i' is declared but never used in[0m
+│   [92m       'TAddressParser.GetDevAddr'[0m
+│   [92m[Hint] [15:51:09] : [<dcc>] Hint: Variable 'i' is declared[0m
+│   [92m       but never used in 'TAddressParser.GetFirstLineAddr'[0m
+│   [92m[Hint] [15:51:09] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\programs\WorkTotal\uCheckChangeLog.pas(199)[0m
+│   [92m       Hint: Private symbol 'CheckActiveDbC[0m
+│   [92m[Hint] [15:51:09] : [<dcc>] uClassAdapter.pas(311) Hint:[0m
+│   [92m       Private symbol 'NewdeviceO2' declared but never[0m
+│   [92m       used[0m
+│   [92m[Hint] [15:51:10] : [<dcc>] uLkJSON.pas(1058) Hint:[0m
+│   [92m       Variable 'j' is declared but never used in[0m
+│   [92m       'TlkJSONobject.Delete'[0m
+│   [92m[Hint] [15:51:11] : [<dcc>] Hint: Private symbol[0m
+│   [92m       'ConvToPIN2Code' declared but never used[0m
+│   [92m[Hint] [15:51:11] : [<dcc>] u_pkutxtconvert.pas(227) Hint:[0m
+│   [92m       Private symbol 'GetDeviceItemCollect' declared but[0m
+│   [92m       never used[0m
+│   [92m[Hint] [15:51:11] : [<dcc>] Hint: Variable 'brt' is[0m
+│   [92m       declared but never used in 'UpdateKey'[0m
+│   [92m[Hint] [15:51:11] : [<dcc>] uOriCore.pas(17838) Hint:[0m
+│   [92m       Variable 'FAdr' is declared but never used in[0m
+│   [92m       'TfrmOriCore.mRSSMNewInitializationDeviceConnectToPKU'[0m
+│   [92m[Hint] [15:51:11] : [<dcc>] uRSDev.pas(53781) Hint:[0m
+│   [92m       Variable 'adr_dev' is declared but never used in[0m
+│   [92m       'TRSAbonentDevice.SetNewAddressFromObj'[0m
+│   [92m[Hint] [15:51:12] : [<dcc>] Hint: Private symbol[0m
+│   [92m       'GetAddrInfo' declared but never used[0m
+│   [92m[Hint] [15:51:16] : [<dcc>] unSummer.pas(7762) Hint:[0m
+│   [92m       Variable 's' is declared but never used in[0m
+│   [92m       'TSenderThread.Execute'[0m
+│   [92m[Hint] [15:51:22] : [<dcc>] uPassGen.pas(252) Hint:[0m
+│   [92m       Variable 'NData' is declared but never used in[0m
+│   [92m       'TfrmPassGen.vstAccessZoneAddToSelection'[0m
+│   [92m[Hint] [15:51:22] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\programs\ABD\NewEditorPlan\ufrmBaseDialog.pas(86)[0m
+│   [92m       Hint: Value assigned to 'TfrmBaseDialog.ShowModal'[0m
+│   [92m       never used[0m
+│   [92m[Hint] [15:51:22] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\programs\ABD\NewEditorPlan\ufrmPlanEditor.pas(2128)[0m
+│   [92m       Hint: Variable '[0m
+│   [92m[Hint] [15:51:23] : [<dcc>] unMonitor.pas(15992) Hint:[0m
+│   [92m       Variable 'aQueryID' is declared but never used in[0m
+│   [92m       'TfrmMonitor.RpcServerDeviceRealVersionUpdExecute'[0m
+│   [92m[Hint] [15:51:32] : [<dcc>] Hint: Variable 'i' is declared[0m
+│   [92m       but never used in[0m
+│   [92m       'TImpexData.FindEmployeeInOLAndWriteEmpNumOLIntoObj'[0m
+│   [92m[Hint] [15:51:32] : [<dcc>] uImpexDataClass.pas(46) Hint:[0m
+│   [92m       Private symbol 'FConnected' declared but never used[0m
+│   [92m[Hint] [15:51:32] : [<dcc>][0m
+│   [92m       ImportWizardMainFormUnit.pas(2830) Hint: Variable[0m
+│   [92m       'codeMatch' is declared but never used in 'IsCode[0m
+│   [92m[Hint] [15:51:34] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\senselock\grdLowLewelApi.pas(422)[0m
+│   [92m       Hint: Variable 'i' is declared but never used in[0m
+│   [92m       'grdFindKey'[0m
+│   [92m[Warning] [15:51:34] : [<dcc>] Warning: Comparing signed[0m
+│   [92m          and unsigned types - widened both operands[0m
+│   [92m[Hint] [15:51:40] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
+│   [92m       4\Source\ExportPack\frxExportODFDialog.pas(38)[0m
+│   [92m       Hint: Overriding virtual method[0m
+│   [92m       'TfrxODFExportDialog.InitControlsFromFilter' has[0m
+│   [92m       lower visibility (protected) than base class[0m
+│   [92m       'TfrxBaseExportDialog' (public)[0m
+│   [92m[Hint] [15:51:40] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
+│   [92m       4\Source\ExportPack\frxExportXLSDialog.pas(44)[0m
+│   [92m       Hint: Overriding virtual method[0m
+│   [92m       'TfrxXLSExportDialog.InitControlsFromFilter' has[0m
+│   [92m[Hint] [15:51:41] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
+│   [92m       4\Source\ExportPack\frxExportHTMLDivDialog.pas(50)[0m
+│   [92m       Hint: Overriding virtual method[0m
+│   [92m       'TfrxHTMLDivExportDialog.InitControlsFromFilter'[0m
+│   [92m       has lower visibility (protected) than base class[0m
+│   [92m       'TfrxBaseExportDialog' (public)[0m
+│   [92m[Hint] [15:51:41] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
+│   [92m       4\Source\ExportPack\frxExportXLSXDialog.pas(44)[0m
+│   [92m       Hint: Overriding virtual method[0m
+│   [92m       'TfrxXLSXExportDialog.InitFilterFromDialog' has[0m
+│   [92m[Hint] [15:51:42] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\components\WorkTime\frmChart.pas(234)[0m
+│   [92m       Hint: Private symbol 'ScrollBoxRect' declared but[0m
+│   [92m       never used[0m
+│   [92m[Hint] [15:52:02] : [<dcc>] Subscriber.pas(756) Hint:[0m
+│   [92m       Variable 'SubInfo' is declared but never used in[0m
+│   [92m       'TSubscribersInfo.GetInfoSubscribByDeviceMac'[0m
+│   [92m[Hint] [15:52:03] : [<dcc>] Hint: Private symbol[0m
+│   [92m       'AddParameter' declared but never used[0m
+│   [92m[Hint] [15:52:05] : [<dcc>] Hint: В модуле используются[0m
+│   [92m       платформозависимые константы![0m
+│   [92m[Hint] [15:52:14] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\OriProComp\CoreComp\uUniStatisticConstTables.pas(1327)[0m
+│   [92m       Hint:[0m
+│   [92m[Hint] [15:52:15] : [<dcc>] Hint: Value assigned to[0m
+│   [92m       'VValue' never used[0m
+│   [92m[Hint] [15:52:18] : [<dcc>] Hint: Value assigned to 'T2'[0m
+│   [92m       never used[0m
+│   [92m[Hint] [15:52:34] : [<dcc>] uPlans.pas(236) Hint: Value[0m
+│   [92m       assigned to 'TPlans.AddPlan' never used[0m
+│   [92m[Hint] [15:52:42] : [<dcc>] uFrameMainChart.pas(540) Hint:[0m
+│   [92m       Value assigned to 'ParamNum' never used[0m
+│   [92m[Warning] [15:52:43]W: [Step 7/21] [vip][warning]build[0m
+│   [92m          number overflow: 24787 change to:4787[0m
+│   [92m[Hint] [15:52:45] : [<dcc>][0m
+│   [92m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\JVCL_old\jvcl\source\JvHidControllerClass.pas(1828)[0m
+│   [92m       Hint: Value assigned to 'I' never used[0m
+│                                                            │
+│ [91m✖ УДАЛЕНО (3 warnings, 45 hints):[0m
+│                                                            │
+│   [91m[Hint] [14:13:34] : [<dcc>] tResultConvet.pas(1105) Hint:[0m
+│   [91m       Value assigned to 'TOriAnswerParser.ParseIt_T'[0m
+│   [91m       never used[0m
+│   [91m[Hint] [14:13:39] : [<dcc>][0m
+│   [91m       Scenarios\ufrmScenariosForDevice.pas(158) Hint:[0m
+│   [91m       Private symbol 'ValidPropertyItems' declared but[0m
+│   [91m       never used[0m
+│   [91m[Hint] [14:13:40] : [<dcc>] Hint: Private symbol[0m
+│   [91m       'FindInTree' declared but never used[0m
+│   [91m[Hint] [14:13:40] : [<dcc>] Hint: Private symbol[0m
+│   [91m       'SetFilter' declared but never used[0m
+│   [91m[Hint] [14:13:40] : [<dcc>][0m
+│   [91m       NewEditorPlan\uIndicatorClass.pas(23) Hint:[0m
+│   [91m       Overriding virtual method[0m
+│   [91m       'TObjectIndicator.InitMaxMinValue' has lower[0m
+│   [91m       visibility (protected) than base class[0m
+│   [91m       'TObjectDevices[0m
+│   [91m[Hint] [14:13:41] : [<dcc>] NewEditorPlan\uPlans.pas(236)[0m
+│   [91m       Hint: Value assigned to 'TPlans.AddPlan' never used[0m
+│   [91m[Hint] [14:13:41] : [<dcc>][0m
+│   [91m       itorPlan\ufrmSettingToolIcons.pas(279) Hint:[0m
+│   [91m       Variable 'GlyphTop' is declared but never used in[0m
+│   [91m       'TfrmSettingToolIcons.tvObjectsPanelDrawText'[0m
+│   [91m[Hint] [14:13:41] : [<dcc>] Hint: Overriding virtual[0m
+│   [91m       method 'TfrmStaffGuestCard.OnMouseWheel' has lower[0m
+│   [91m       visibility (protected) than base class[0m
+│   [91m       'TfrmBasePersonCard' (public)[0m
+│   [91m[Hint] [14:13:41] : [<dcc>][0m
+│   [91m       Persons\ufrmScanerChoice.pas(21) Hint: Private[0m
+│   [91m       symbol 'FfrmScannerAbby' declared but never used[0m
+│   [91m[Hint] [14:13:42] : [<dcc>] fnReadConf.pas(176) Hint:[0m
+│   [91m       Variable 'LineList' is declared but never used in[0m
+│   [91m       'TfrmDeviceConf.fillDeviceTree'[0m
+│   [91m[Hint] [14:13:42] : [<dcc>] Hint: Private symbol[0m
+│   [91m       'FFileName' declared but never used[0m
+│   [91m[Hint] [14:13:43] : [<dcc>] Hint: Value assigned to[0m
+│   [91m       'GetOrionAutoKeyType' never used[0m
+│   [91m[Hint] [14:13:43] : [<dcc>] Hint: Variable 'FileExt' is[0m
+│   [91m       declared but never used in[0m
+│   [91m       'TSiriusImportForm.SelectFileButtonClick'[0m
+│   [91m[Hint] [14:13:43] : [<dcc>] fnTMSInspector.pas(1687) Hint:[0m
+│   [91m       Value assigned to 'i' never used[0m
+│   [91m[Hint] [14:13:43] : [<dcc>] Hint: Variable 'node' is[0m
+│   [91m       declared but never used in[0m
+│   [91m       'DeleteFromTreeViewAllNodeWith_V'[0m
+│   [91m[Hint] [14:13:51] : [<dcc>] Hint: Value assigned to[0m
+│   [91m       'TRTZC2000_2_200_Async.ExecuteItem' never used[0m
+│   [91m[Hint] [14:13:51] : [<dcc>] Hint: Variable 'i' is declared[0m
+│   [91m       but never used in 'TAddressParser.GetDevAddr'[0m
+│   [91m[Hint] [14:13:51] : [<dcc>] uClassAddress.pas(870) Hint:[0m
+│   [91m       Variable 'i' is declared but never used in[0m
+│   [91m       'TAddressParser.GetFirstLineAddr'[0m
+│   [91m[Hint] [14:13:53] : [<dcc>] Hint: Private symbol[0m
+│   [91m       'NewdeviceO2' declared but never used[0m
+│   [91m[Hint] [14:13:53] : [<dcc>] Hint: Variable 'j' is declared[0m
+│   [91m       but never used in 'TlkJSONobject.Delete'[0m
+│   [91m[Hint] [14:13:53] : [<dcc>] u_pkutxtconvert.pas(221) Hint:[0m
+│   [91m       Private symbol 'ConvToPIN2Code' declared but never[0m
+│   [91m       used[0m
+│   [91m[Hint] [14:13:54] : [<dcc>] Hint: Private symbol[0m
+│   [91m       'GetDeviceItemCollect' declared but never used[0m
+│   [91m[Hint] [14:13:54] : [<dcc>] uOriCore.pas(17838) Hint:[0m
+│   [91m       Variable 'FAdr' is declared but never used in[0m
+│   [91m       'TfrmOriCore.mRSSMNewInitializationDeviceC[0m
+│   [91m[Hint] [14:13:55] : [<dcc>] uRSDev.pas(53781) Hint:[0m
+│   [91m       Variable 'adr_dev' is declared but never used in[0m
+│   [91m       'TRSAbonentDevice.Se[0m
+│   [91m[Hint] [14:13:55] : [<dcc>] uRSDev.pas(4765) Hint: Private[0m
+│   [91m       symbol 'GetAddrInfo' declared but never used[0m
+│   [91m[Warning] [14:13:55] : [<dcc>] Warning: Symbol[0m
+│   [91m          'ICoOriCoreEventEvents' is specific to a[0m
+│   [91m          platform[0m
+│   [91m[Hint] [14:14:00] : [<dcc>] Hint: Variable[0m
+│   [91m       'MainWindowRect' is declared but never used in[0m
+│   [91m       'TfrmMessageWindow.ShowMessageWindowEx'[0m
+│   [91m[Hint] [14:14:00] : [<dcc>] unSummer.pas(7762) Hint:[0m
+│   [91m       Variable 's' is declared but never used i[0m
+│   [91m[Hint] [14:14:06] : [<dcc>] Hint: Value assigned to[0m
+│   [91m       'CommandCountOld' never used[0m
+│   [91m[Hint] [14:14:06] : [<dcc>] Hint: Variable 'NData' is[0m
+│   [91m       declared but never used in[0m
+│   [91m       'TfrmPassGen.vstAccessZoneAddToSelection'[0m
+│   [91m[Hint] [14:14:07] : [<dcc>] Hint: Value assigned to[0m
+│   [91m       'TfrmBaseDialog.ShowModal' never used[0m
+│   [91m[Hint] [14:14:07] : [<dcc>][0m
+│   [91m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\programs\ABD\NewEditorPlan\ufrmPlanEditor.pas(2128)[0m
+│   [91m       Hint: Variable 'NodeData' is declared but never[0m
+│   [91m       used in[0m
+│   [91m       'TfrmPlanEditor.acShowColorRangeIndicatorsExecute'[0m
+│   [91m[Hint] [14:14:07] : [<dcc>] Hint: Variable 'aQueryID' is[0m
+│   [91m       declared but never used in[0m
+│   [91m       'TfrmMonitor.RpcServerDeviceRealVersionUpdExecute'[0m
+│   [91m[Hint] [14:14:17] : [<dcc>] Hint: Private symbol[0m
+│   [91m       'FConnected' declared but never used[0m
+│   [91m[Hint] [14:14:17] : [<dcc>][0m
+│   [91m       ImportWizardMainFormUnit.pas(2830) Hint: Variable[0m
+│   [91m       'codeMatch' is declared but never used in[0m
+│   [91m       'IsCodeExist'[0m
+│   [91m[Hint] [14:14:20] : [<dcc>] Hint: Variable 'i' is declared[0m
+│   [91m       but never used in 'grdFindKey'[0m
+│   [91m[Warning] [14:14:20] : [<dcc>] GroupUnit.pas(764) Warning:[0m
+│   [91m          Comparing signed and unsigned types - widened[0m
+│   [91m          both operands[0m
+│   [91m[Hint] [14:14:26] : [<dcc>] Hint: Overriding virtual[0m
+│   [91m       method 'TfrxODFExportDialog.InitControlsFromFilter'[0m
+│   [91m       has lower visibility (protected) than base class[0m
+│   [91m       'TfrxBaseExportDialog' (public)[0m
+│   [91m[Hint] [14:14:26] : [<dcc>][0m
+│   [91m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
+│   [91m       4\Source\ExportPack\frxExportXLSDialog.pas(44)[0m
+│   [91m       Hint: Overriding virtual method[0m
+│   [91m       'TfrxXLSExportDialog.InitControlsFromFilter' has[0m
+│   [91m       lower visibility (protected) than base class[0m
+│   [91m       'TfrxBaseExportDialog' (public)[0m
+│   [91m[Hint] [14:14:27] : [<dcc>] Hint: Overriding virtual[0m
+│   [91m       method[0m
+│   [91m       'TfrxHTMLDivExportDialog.InitControlsFromFilter'[0m
+│   [91m       has lower visibility (protected) than base class[0m
+│   [91m       'TfrxBaseExportDialog' (public)[0m
+│   [91m[Hint] [14:14:27] : [<dcc>][0m
+│   [91m       N:\BuildArea\9d0f9c41cdecab93\D7OrionPro\Components\FastReport[0m
+│   [91m       4\Source\ExportPack\frxExportXLSXDialog.pas(44)[0m
+│   [91m       Hint: Overriding virtual method[0m
+│   [91m       'TfrxXLSXExportDialog.InitFilterFromDialog' has[0m
+│   [91m       lower visibility (protected) than base class[0m
+│   [91m       'TfrxBaseExportDialog' (public)[0m
+│   [91m[Hint] [14:14:29] : [<dcc>] Hint: Private symbol[0m
+│   [91m       'ScrollBoxRect' declared but never used[0m
+│   [91m[Hint] [14:14:51] : [<dcc>] Hint: Variable 'SubInfo' is[0m
+│   [91m       declared but never used in[0m
+│   [91m       'TSubscribersInfo.GetInfoSubscribByDeviceMac'[0m
+│   [91m[Hint] [14:14:52] : [<dcc>] MainUnit.pas(124) Hint:[0m
+│   [91m       Private symbol 'AddParameter' declared but never[0m
+│   [91m       used[0m
+│   [91m[Hint] [14:14:54] : [<dcc>] ReportFactory.pas(7328) Hint:[0m
+│   [91m       Variable 'FirstColName' is declared but never used[0m
+│   [91m       in[0m
+│   [91m       'TAboutEmployee_ITOGO_FullReport.SendFinalDataToStorage'[0m
+│   [91m[Hint] [14:15:32] : [<dcc>] Hint: Value assigned to[0m
+│   [91m       'ParamNum' never used[0m
+│   [91m[Warning] [14:15:34]W: [Step 7/21] [vip][warning]build[0m
+│   [91m          number overflow: 24782 change to:4782[0m
+│   [91m[Hint] [14:15:37] : [<dcc>] Hint: Value assigned to 'I'[0m
+│   [91m       never used[0m
+│                                                            │
+│ [90m═ БЕЗ ИЗМЕНЕНИЙ: 2110 предупреждений[0m
+└────────────────────────────────────────────────────────────┘
+
